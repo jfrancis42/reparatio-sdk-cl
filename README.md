@@ -137,6 +137,24 @@ sbcl --load run-tests.lisp
 
 Exit code 0 = all tests passed.
 
+---
+
+## Running the Examples
+
+The repository includes 15 runnable examples covering every API method.
+
+```bash
+sbcl --noinform \
+     --eval '(load "~/quicklisp/setup.lisp")' \
+     --eval "(pushnew #p\"$(pwd)/\" asdf:*central-registry* :test #'equal)" \
+     --eval '(ql:quickload "reparatio" :silent t)' \
+     --load 'examples/examples.lisp' \
+     --eval '(reparatio-examples:run-all-examples)' \
+     --eval '(uiop:quit 0)'
+```
+
+Set `REPARATIO_API_KEY` in your environment before running.
+
 ## License
 
 MIT — © Ordo Artificum LLC

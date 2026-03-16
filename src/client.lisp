@@ -133,7 +133,8 @@ WARNING  — string from X-Reparatio-Warning / X-Reparatio-Errors, or NIL."
                :form-data        t
                :force-binary     t
                :connection-timeout (client-timeout client)
-               :read-timeout       (client-timeout client))
+               #+:lispworks7.1 :read-timeout
+               #+:lispworks7.1 (client-timeout client))
     (%raise-for-status status body)
     (values body status headers)))
 
@@ -146,7 +147,8 @@ WARNING  — string from X-Reparatio-Warning / X-Reparatio-Errors, or NIL."
                :additional-headers (%headers client)
                :force-binary       nil
                :connection-timeout (client-timeout client)
-               :read-timeout       (client-timeout client))
+               #+:lispworks7.1 :read-timeout
+               #+:lispworks7.1 (client-timeout client))
     (declare (ignore headers))
     (%raise-for-status status body)
     (%parse-json body)))
