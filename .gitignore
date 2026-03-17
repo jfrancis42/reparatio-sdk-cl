@@ -1,0 +1,8 @@
+*.fasl
+*.fas
+*.lib
+*.so
+*.dylib
+*.dx64fsl
+*.lx64fsl
+.slime-history.eld
